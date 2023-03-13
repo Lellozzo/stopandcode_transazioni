@@ -1,0 +1,16 @@
+<div
+  *ngIf="trans"
+  [ngClass]="{
+    verde: trans.type == 'invoice',
+    grigio: trans.type == 'withdrawal'
+  }"
+>
+  <h3>{{ trans.business }}</h3>
+  <p>{{ trans.name }}</p>
+  <p>Account: {{ trans.account }}</p>
+  <p>Date: {{ trans.date * 1000 | date : "MMM d, y" }}</p>
+  <p>Type: {{ trans.type }}</p>
+  <p [ngClass]="{ giallo: trans.amount > 700 }">
+    Amount: {{ trans.amount | currency : "$ " }}
+  </p>
+</div>
